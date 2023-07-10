@@ -75,6 +75,24 @@ public class SellerDaoJDBC implements SellerDAO {
 
     @Override
     public void deleteById(Integer id) {
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("DELETE FROM seller WHERE id = ?", Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1, id);
+
+            int affectedRows = pst.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new DbException("unexpected error, no rows affected!");
+            }
+
+
+
+        } catch (SQLException err ) {
+            throw new DbException(err.getMessage());
+        } finally {
+            DB.closeStatment(pst);
+        }
 
     }
 
