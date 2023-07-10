@@ -9,11 +9,11 @@ import java.time.format.DateTimeFormatter;
 public class Main {
     public static void main(String[] args) {
         Department dep = new Department(1, "books");
-        Seller sell = new Seller(2, "Carlos", "carlos@email.com", LocalDate.now(), 4000.0, dep);
+
 
         SellerDAO sellerDAO = DAOFactory.createSellerDAO();
 
-        Seller seller = sellerDAO.findById(3);
-        System.out.println(seller);
+        System.out.println("=== TEST 1: seller findById ===");
+        System.out.println(sellerDAO.findById(3));
     }
 }
