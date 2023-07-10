@@ -12,6 +12,8 @@ public class Main {
         Seller sell = new Seller(2, "Carlos", "carlos@email.com", LocalDate.now(), 4000.0, dep);
 
         SellerDAO sellerDAO = DAOFactory.createSellerDAO();
-        System.out.println(sell);
+
+        Seller seller = sellerDAO.findById(3);
+        System.out.println(seller);
     }
 }
